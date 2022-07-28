@@ -1,4 +1,4 @@
-{
+pub const ORG_CODES: &str = r#"{
   "04.00.01.01": {
     "faculty": "Kedokteran",
     "shortFaculty": "FK",
@@ -1961,4 +1961,4 @@
     "major": "Aktuaria (Actuarial Science)",
     "program": "S1 Reguler (Undergraduate Program)"
   }
-}
+}"#;

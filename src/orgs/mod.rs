@@ -1,6 +1,9 @@
-use std::{collections::HashMap, fs};
+use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
+
+mod orgcode;
+use orgcode::ORG_CODES;
 
 #[derive(Clone, Deserialize, Serialize)]
 pub struct Organization {
@@ -14,7 +17,5 @@ pub struct Organization {
 }
 
 pub fn get_organizations() -> HashMap<String, Organization> {
-    let json = fs::read_to_string("./src/orgs/orgcode.json").unwrap();
-
-    serde_json::from_str(&json).unwrap()
+    serde_json::from_str(ORG_CODES).unwrap()
 }
