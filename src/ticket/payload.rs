@@ -1,13 +1,14 @@
+use serde::Serialize;
 use strong_xml::XmlRead;
 
-#[derive(Debug, XmlRead)]
+#[derive(Serialize, XmlRead)]
 #[xml(tag = "cas:serviceResponse")]
 pub struct ServiceResponse {
     #[xml(child = "cas:authenticationSuccess")]
     pub authentication_success: Option<AuthenticationSuccess>,
 }
 
-#[derive(Debug, XmlRead)]
+#[derive(Serialize, XmlRead)]
 #[xml(tag = "cas:authenticationSuccess")]
 pub struct AuthenticationSuccess {
     #[xml(flatten_text = "cas:user")]
@@ -17,7 +18,7 @@ pub struct AuthenticationSuccess {
     pub attributes: Attributes,
 }
 
-#[derive(Debug, XmlRead)]
+#[derive(Serialize, XmlRead)]
 #[xml(tag = "cas:attributes")]
 pub struct Attributes {
     #[xml(flatten_text = "cas:ldap_cn")]
