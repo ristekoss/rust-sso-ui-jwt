@@ -2,6 +2,6 @@
 
 Notable changes to this project will be documented here. This project follows [Semantic Versioning](https://semver.org).
 
-# v0.1.0 - July 9, 2022
+# v0.1.0 - July 29, 2022
 
-Initial release
+This is the initial release of the project
