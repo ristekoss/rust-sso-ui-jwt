@@ -33,9 +33,9 @@ pub async fn validate_ticket(
 
     let content = match response.text().await {
         Ok(content) => content,
-        Err(err) => {
+        Err(_err) => {
             #[cfg(feature = "log")]
-            log::error!("{}", err);
+            log::error!("{}", _err);
 
             return Err(ValidateTicketError::XMLParsingError);
         }
