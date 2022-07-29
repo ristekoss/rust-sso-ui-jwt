@@ -9,7 +9,7 @@ use orgcode::ORG_CODES;
 pub struct Organization {
     pub faculty: String,
 
-    #[serde(rename = "shortFaculty")]
+    #[serde(alias = "shortFaculty")]
     pub short_faculty: String,
 
     pub major: String,
