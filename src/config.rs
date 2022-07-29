@@ -1,6 +1,3 @@
-#[cfg(feature = "log")]
-use crate::log::init_logger;
-
 #[derive(Clone)]
 pub struct SSOJWTConfig {
     pub access_token_exp_time: i64,
@@ -21,9 +18,6 @@ impl SSOJWTConfig {
         service_url: String,
         origin_url: String,
     ) -> Self {
-        #[cfg(feature = "log")]
-        init_logger();
-
         Self {
             access_token_exp_time,
             refresh_token_exp_time,

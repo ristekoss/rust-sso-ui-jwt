@@ -23,9 +23,9 @@ pub async fn validate_ticket(
         .await
     {
         Ok(res) => res,
-        Err(err) => {
+        Err(_err) => {
             #[cfg(feature = "log")]
-            log::error!("{err}");
+            log::error!("{}", _err);
 
             return Err(ValidateTicketError::ReqwestError);
         }
@@ -35,7 +35,7 @@ pub async fn validate_ticket(
         Ok(content) => content,
         Err(err) => {
             #[cfg(feature = "log")]
-            log::error!("{err}");
+            log::error!("{}", err);
 
             return Err(ValidateTicketError::XMLParsingError);
         }
