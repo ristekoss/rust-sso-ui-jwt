@@ -5,10 +5,11 @@ edition = "2021"
 authors = ["RISTEK Open Source <team@ristek.cs.ui.ac.id>"]
 homepage = "https://github.com/ristekoss/rust-sso-ui-jwt"
 repository = "https://github.com/ristekoss/rust-sso-ui-jwt"
+documentation = "https://docs.rs/sso-ui-jwt"
 license = "MIT"
 
 [workspace]
-members = ["example"]
+members = ["examples/*"]
 
 [dependencies]
 jsonwebtoken = "8.1.1"
