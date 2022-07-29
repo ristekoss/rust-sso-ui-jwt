@@ -1,11 +1,14 @@
 [package]
 name = "sso-ui-jwt"
+description = "Rust library for JWT utilities from SSO UI"
 version = "0.1.0"
 edition = "2021"
+keywords = ["sso", "jwt", "universitas-indonesia"]
 authors = ["RISTEK Open Source <team@ristek.cs.ui.ac.id>"]
 homepage = "https://github.com/ristekoss/rust-sso-ui-jwt"
 repository = "https://github.com/ristekoss/rust-sso-ui-jwt"
 documentation = "https://docs.rs/sso-ui-jwt"
+readme = "README.md"
 license = "MIT"
 
 [workspace]

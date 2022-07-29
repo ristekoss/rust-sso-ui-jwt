@@ -1,6 +1,10 @@
 # rust-sso-ui-jwt
 
-A rust library crate for using SSO UI login data as JWT
+Rust library for JWT utilities from SSO UI
+
+## Usage
+
+See the [examples](https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/examples) for reference on using this library.
 
 ## Maintainers
 
