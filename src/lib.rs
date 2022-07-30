@@ -42,7 +42,6 @@
 //!
 //! [examples]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/examples
 
-/// SSO and JWT configurations
 pub mod config;
 
 /// UI organization codes and data
