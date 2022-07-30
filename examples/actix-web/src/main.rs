@@ -2,7 +2,7 @@ use actix_web::{self, http::header, web, App, HttpRequest, HttpResponse, HttpSer
 use serde::{Deserialize, Serialize};
 use sso_ui_jwt::{
     ticket::{validate_ticket, ValidateTicketError},
-    token::{create_token, decode_token, TokenType},
+    token::{create_token, decode_token, SSOUser, TokenType},
     SSOJWTConfig,
 };
 
@@ -59,7 +59,7 @@ async fn get_self(config: web::Data<SSOJWTConfig>, req: HttpRequest) -> HttpResp
 
                     if let Some(token) = token {
                         match decode_token(&**config, TokenType::AccessToken, &token) {
-                            Ok(data) => HttpResponse::Ok().json(data.claims),
+                            Ok(data) => HttpResponse::Ok().json(SSOUser::from(data.claims)),
                             Err(err) => HttpResponse::Unauthorized().body(err.to_string()),
                         }
                     } else {
