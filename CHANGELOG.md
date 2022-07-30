@@ -1,6 +1,6 @@
 # Changelog
 
-Notable changes to this project will be documented here.
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog], and this project adheres to [Semantic Versioning].
 
@@ -9,9 +9,11 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 ### Added
 - Add code documentation ([#3](https://github.com/ristekoss/rust-sso-ui-jwt/pull/3)) ([@nayyara-airlangga])
 - Create SSO user struct ([#4](https://github.com/ristekoss/rust-sso-ui-jwt/pull/4)) ([@nayyara-airlangga])
+- Add get single organization handler ([#6](https://github.com/ristekoss/rust-sso-ui-jwt/pull/6)) ([@nayyara-airlangga])
 
 ### Changed
 - Reduce feature helper modules visibility to `pub(super)` ([#5](https://github.com/ristekoss/rust-sso-ui-jwt/pull/5)) ([@nayyara-airlangga])
+- Remove `Clone` and `PartialEq` trait implementation from the `Organization` struct ([#6](https://github.com/ristekoss/rust-sso-ui-jwt/pull/6)) ([@nayyara-airlangga])
 
 
 ## [v0.1.1] - 2022-07-29
