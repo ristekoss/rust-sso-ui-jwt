@@ -33,3 +33,28 @@ pub enum TokenType {
     #[serde(rename = "refresh_token")]
     RefreshToken,
 }
+
+/// Represent's a user who's authenticated via SSO UI.
+#[derive(Deserialize, Serialize)]
+pub struct SSOUser {
+    /// User's name.
+    pub nama: String,
+    /// User's username.
+    pub username: String,
+    /// User's student id number.
+    pub npm: String,
+    /// User's organization.
+    pub organization: Organization,
+}
+
+impl From<SSOJWTClaims> for SSOUser {
+    /// Creates an [`SSOUser`] from the claims.
+    fn from(claims: SSOJWTClaims) -> Self {
+        Self {
+            nama: claims.nama,
+            username: claims.username,
+            npm: claims.npm,
+            organization: claims.organization,
+        }
+    }
+}
