@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ## [Unreleased]
 
+No changes have been made since the last release.
+
+
+## [v0.2.0] - 2022-07-30
+
+Thanks to the following for their contributions:
+- [@nayyara-airlangga]
+
 ### Added
 - Add code documentation ([#3](https://github.com/ristekoss/rust-sso-ui-jwt/pull/3)) ([@nayyara-airlangga])
 - Create SSO user struct ([#4](https://github.com/ristekoss/rust-sso-ui-jwt/pull/4)) ([@nayyara-airlangga])
@@ -40,7 +48,8 @@ Thanks to the following for their contributions:
 [contributing.md]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/CONTRIBUTING.md
 
 <!-- VERSION COMPARISON -->
-[Unreleased]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.1...v0.2.0
 [v0.1.1]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/v0.1.0
 
