@@ -4,9 +4,9 @@
 //! authorization mechanism to the CAS server and if valid will return an XML response that
 //! contains the user data if successful and an error if it fails.
 
-pub mod error;
-pub mod handler;
-pub mod payload;
+pub(super) mod error;
+pub(super) mod handler;
+pub(super) mod payload;
 
 pub use error::ValidateTicketError;
 pub use handler::validate_ticket;
