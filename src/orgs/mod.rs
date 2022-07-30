@@ -29,7 +29,7 @@ pub struct Organization {
 /// # Examples
 ///
 /// ```rust
-/// use sso_ui_jwt::orgs::{get_organizations, Organization};
+/// use sso_ui_jwt::orgs::get_organizations;
 ///
 /// let orgs = get_organizations();
 /// let org = orgs.get("01.00.12.01").unwrap();
