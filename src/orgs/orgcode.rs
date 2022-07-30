@@ -1,4 +1,4 @@
-//! Organization code and data constant
+//! Organization code and data constant.
 
 pub const ORG_CODES: &str = r#"{
   "04.00.01.01": {

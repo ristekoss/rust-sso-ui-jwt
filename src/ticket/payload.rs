@@ -37,15 +37,15 @@ pub struct Attributes {
     #[xml(flatten_text = "cas:kd_org")]
     pub kd_org: String,
 
-    /// User's role
+    /// User's role.
     #[xml(flatten_text = "cas:peran_user")]
     pub peran_user: String,
 
-    /// User's name
+    /// User's name.
     #[xml(flatten_text = "cas:nama")]
     pub nama: String,
 
-    /// User's student ID number
+    /// User's student ID number.
     #[xml(flatten_text = "cas:npm")]
     pub npm: String,
 }
