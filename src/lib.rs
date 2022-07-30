@@ -43,10 +43,7 @@
 //! [examples]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/examples
 
 pub mod config;
-
 pub mod orgs;
-
-/// SSO ticket validation and XML response parsed structs
 pub mod ticket;
 
 /// JWT creation and claims decoding
