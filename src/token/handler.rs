@@ -4,7 +4,7 @@ use jsonwebtoken::{
     decode, encode, errors::Result, DecodingKey, EncodingKey, Header, TokenData, Validation,
 };
 
-use crate::{orgs::get_organizations, ticket::ServiceResponse, SSOJWTConfig};
+use crate::{orgs::get_organization, ticket::ServiceResponse, SSOJWTConfig};
 
 use super::{payload::SSOJWTClaims, TokenType};
 
@@ -70,9 +70,7 @@ pub fn create_token(
     let exp = now.timestamp() + token_exp_time;
 
     let user_attributes = service_res.authentication_success.unwrap();
-
-    let orgs = get_organizations();
-    let org = orgs.get(&user_attributes.attributes.kd_org).unwrap();
+    let organization = get_organization(&user_attributes.attributes.kd_org).unwrap();
 
     let claims = SSOJWTClaims {
         iat: now.timestamp(),
@@ -80,7 +78,7 @@ pub fn create_token(
         username: user_attributes.user,
         nama: user_attributes.attributes.nama,
         npm: user_attributes.attributes.npm,
-        organization: org.clone(),
+        organization,
     };
 
     encode(
