@@ -1,3 +1,5 @@
+//! JWT creation and decoding handlers.
+
 use jsonwebtoken::{
     decode, encode, errors::Result, DecodingKey, EncodingKey, Header, TokenData, Validation,
 };
@@ -6,6 +8,50 @@ use crate::{orgs::get_organizations, ticket::ServiceResponse, SSOJWTConfig};
 
 use super::{payload::SSOJWTClaims, TokenType};
 
+/// Creates a JWT from service response.
+///
+/// # Errors
+///
+/// - [`jsonwebtoken::Error`][jwterror]: Errors from the [`jsonwebtoken`] crate.
+///
+/// [jwterror]: jsonwebtoken::errors::Error
+/// [`jsonwebtoken`]: jsonwebtoken
+///
+/// # Examples
+///
+/// ```rust
+/// use sso_ui_jwt::{
+///     ticket::{Attributes, AuthenticationSuccess, ServiceResponse},
+///     token::{create_token, TokenType},
+///     SSOJWTConfig
+/// };
+///
+/// let config = SSOJWTConfig::new(
+///     120,
+///     120,
+///     String::from("access secret"),
+///     String::from("refresh secret"),
+///     String::from("http://some-service/login"),
+///     String::from("http://some-service"),
+/// );
+///
+/// let service_res = ServiceResponse {
+///     authentication_success: Some(
+///         AuthenticationSuccess {
+///             user: String::from("username"),
+///             attributes: Attributes {
+///                 ldap_cn: String::from("Username"),
+///                 kd_org: String::from("01.00.12.01"),
+///                 peran_user: String::from("mahasiswa"),
+///                 nama: String::from("Nama"),
+///                 npm: String::from("Username"),
+///             }
+///         }
+///     ),
+/// };
+///
+/// let result = create_token(&config, TokenType::AccessToken, service_res).unwrap();
+/// ```
 pub fn create_token(
     config: &SSOJWTConfig,
     r#type: TokenType,
@@ -44,6 +90,62 @@ pub fn create_token(
     )
 }
 
+/// Decodes the JWT into its data
+///
+/// # Errors
+///
+/// Errors could occur when decoding the JWT. Those cases are:
+///
+/// - Passing a JWT with invalid claims.
+/// - An expired JWT is passed to the function
+/// - Decoding a JWT with the incorrect type
+///
+/// [jwterror]: jsonwebtoken::errors::Error
+/// [`jsonwebtoken`]: jsonwebtoken
+///
+/// # Examples
+///
+/// ```rust
+/// use sso_ui_jwt::{
+///     ticket::{Attributes, AuthenticationSuccess, ServiceResponse},
+///     token::{create_token, decode_token, TokenType},
+///     SSOJWTConfig
+/// };
+///
+/// let config = SSOJWTConfig::new(
+///     120,
+///     120,
+///     String::from("access secret"),
+///     String::from("refresh secret"),
+///     String::from("http://some-service/login"),
+///     String::from("http://some-service"),
+/// );
+///
+/// let service_res = ServiceResponse {
+///     authentication_success: Some(
+///         AuthenticationSuccess {
+///             user: String::from("username"),
+///             attributes: Attributes {
+///                 ldap_cn: String::from("Username"),
+///                 kd_org: String::from("01.00.12.01"),
+///                 peran_user: String::from("mahasiswa"),
+///                 nama: String::from("Nama"),
+///                 npm: String::from("Username"),
+///             }
+///         }
+///     ),
+/// };
+///
+/// let res = service_res.clone();
+/// let token = create_token(&config, TokenType::RefreshToken, service_res).unwrap();
+///
+/// let claims = decode_token(&config, TokenType::RefreshToken, &token).unwrap().claims;
+///
+/// assert_eq!(
+///     res.authentication_success.unwrap().user,
+///     claims.username
+/// );
+/// ```
 pub fn decode_token(
     config: &SSOJWTConfig,
     r#type: TokenType,
