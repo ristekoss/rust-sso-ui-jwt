@@ -1,4 +1,4 @@
-//! Rust library for JWT utilities from SSO UI
+//! Rust library for JWT utilities from SSO UI.
 //!
 //! Universitas Indonesia (UI) uses a single sign on (SSO) mechanism
 //! for authentication and authorization of their services.
@@ -44,7 +44,6 @@
 
 pub mod config;
 
-/// UI organization codes and data
 pub mod orgs;
 
 /// SSO ticket validation and XML response parsed structs
