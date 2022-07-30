@@ -44,3 +44,43 @@ pub struct Organization {
 pub fn get_organizations() -> HashMap<String, Organization> {
     serde_json::from_str(ORG_CODES).unwrap()
 }
+
+/// Gets a single organization based on the organization code.
+///
+/// # Options
+///
+/// Because an organization with the given organization code could possibly not exist, this
+/// function simply returns an [`Option`] and leave how to handle the output to the user.
+///
+/// # Examples
+///
+/// ```rust
+/// use sso_ui_jwt::orgs::{get_organization, Organization};
+///
+/// let org_code = "01.00.12.01";
+/// let another_org_code = "Random org code";
+///
+/// assert_eq!(
+///     Some(
+///         Organization {
+///             faculty: String::from("Ilmu Komputer"),
+///             short_faculty: String::from("Fasilkom"),
+///             major: String::from("Ilmu Komputer (Computer Science)"),
+///             program: String::from("S1 Reguler (Undergraduate Program)"),
+///         }
+///     ),
+///     get_organization(org_code),
+/// );
+///
+/// assert_eq!(
+///     None,
+///     get_organization(another_org_code),
+/// );
+/// ```
+pub fn get_organization(org_code: &str) -> Option<Organization> {
+    let mut orgs = get_organizations();
+
+    // `remove()` moves the value out of the `orgs` hash map so the value we return does not have a
+    // dangling reference, making this code safe.
+    orgs.remove(org_code)
+}
