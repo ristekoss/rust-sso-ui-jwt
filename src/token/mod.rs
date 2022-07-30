@@ -1,3 +1,5 @@
+//! JWT utilities and claims for user data.
+
 pub mod handler;
 pub mod payload;
 

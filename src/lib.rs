@@ -45,8 +45,6 @@
 pub mod config;
 pub mod orgs;
 pub mod ticket;
-
-/// JWT creation and claims decoding
 pub mod token;
 
 pub use config::SSOJWTConfig;
