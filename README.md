@@ -13,6 +13,10 @@ That's why we decided to make this library.
 It parses the response data into a JSON format and we provide
 the SSO ticket validation mechanism as well as JWT utilities for the data.
 
+## Documentation
+
+You can view the project's documentation in it's [docs.rs](https://docs.rs/sso-ui-jwt/latest/sso_ui_jwt) website.
+
 ## Usage
 
 See the [examples](https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/examples) for reference on using this library.
@@ -23,7 +27,7 @@ Add this to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-sso-ui-jwt = "0.1"
+sso-ui-jwt = "0.2"
 ```
 
 ## Features
@@ -32,7 +36,7 @@ Enabling or disabling features can be done by configuring the library from `Carg
 
 ```toml
 [dependencies.sso-ui-jwt]
-version = "0.1"
+version = "0.2"
 features = ["log"]
 ```
 
@@ -41,6 +45,10 @@ As of right now, there are no default features implemented.
 Full list of features:
 
 - **`log`**: Logs the messages within the library
+
+## Contributing
+
+If you'd like to contribute to this project, please read our [contributing guidelines](https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/CONTRIBUTING.md) **before creating pull requsts**.
 
 ## Maintainers
 
