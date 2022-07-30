@@ -1,31 +1,40 @@
-# Change Log
+# Changelog
 
-Notable changes to this project will be documented here. This project follows [Semantic Versioning] conventions.
+Notable changes to this project will be documented here.
+
+The format is based on [Keep a Changelog], and this project adheres to [Semantic Versioning].
+
+## [Unreleased]
+
+### Added
+- Add code documentation ([#3](https://github.com/ristekoss/rust-sso-ui-jwt/pull/3)) ([@nayyara-airlangga])
 
 
-# [v0.1.1] - 29-07-2022
+## [v0.1.1] - 2022-07-29
 
 Thanks to the following for their contributions:
 - [@nayyara-airlangga]
 
-### Notable Changes
+### Added
 - Add [`CONTRIBUTING.md`][contributing.md] ([@nayyara-airlangga])
 
 
-# [v0.1.0] - 29-07-2022
+## [v0.1.0] - 2022-07-29
 
 Thanks to the following for their contributions:
 - [@nayyara-airlangga]
 
-### Notable Changes
+### Added
 - Release initial version of the project ([@nayyara-airlangga])
 
 
 <!---------- LINKS ---------->
+[Keep A Changelog]: https://keepachangelog.com/en/1.0.0
 [Semantic Versioning]: https://semver.org
 [contributing.md]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/CONTRIBUTING.md
 
 <!-- VERSION COMPARISON -->
+[Unreleased]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.1...HEAD
 [v0.1.1]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/v0.1.0
 
