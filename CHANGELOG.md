@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Added
 - Add code documentation ([#3](https://github.com/ristekoss/rust-sso-ui-jwt/pull/3)) ([@nayyara-airlangga])
+- Create SSO user struct ([#4](https://github.com/ristekoss/rust-sso-ui-jwt/pull/4)) ([@nayyara-airlangga])
 
 
 ## [v0.1.1] - 2022-07-29
