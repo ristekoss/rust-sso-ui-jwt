@@ -6,8 +6,17 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ## [Unreleased]
 
+No changes have been made.
+
+
+## [v0.3.1] - 2022-07-31
+
+Thanks to the following for their contributions:
+- [@nayyara-airlangga]
+
 ### Removed
 - Remove `dotenv` and unused `tokio` features ([#13](https://github.com/ristekoss/rust-sso-ui-jwt/pull/13)) ([@nayyara-airlangga])
+
 
 ## [v0.3.0] - 2022-07-31
 
@@ -64,7 +73,8 @@ Thanks to the following for their contributions:
 [contributing.md]: https://github.com/ristekoss/rust-sso-ui-jwt/tree/main/CONTRIBUTING.md
 
 <!-- VERSION COMPARISON -->
-[Unreleased]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.3.1...HEAD
+[v0.3.1]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.3.0...v0.3.1
 [v0.3.0]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.1...v0.2.0
 [v0.1.1]: https://github.com/ristekoss/rust-sso-ui-jwt/compare/v0.1.0...v0.1.1
