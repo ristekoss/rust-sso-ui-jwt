@@ -1,0 +1,43 @@
+name: Style
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  lint:
+    name: Clippy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+        
+      - name: Install toolchain
+        run: |
+          rustup install stable
+          rustup component add clippy
+        
+      - name: Run clippy
+        run: cargo clippy --workspace --tests -- -D warnings
+        
+  format:
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+        
+      - name: Install toolchain
+        run: |
+          rustup install stable
+          rustup component add rustfmt
+      
+      - name: Run rustfmt
+        run: cargo fmt --check --all
