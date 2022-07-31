@@ -27,7 +27,7 @@ Add this to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-sso-ui-jwt = "0.2"
+sso-ui-jwt = "0.3"
 ```
 
 ## Features
@@ -36,7 +36,7 @@ Enabling or disabling features can be done by configuring the library from `Carg
 
 ```toml
 [dependencies.sso-ui-jwt]
-version = "0.2"
+version = "0.3"
 features = ["log"]
 ```
 
