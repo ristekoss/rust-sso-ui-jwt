@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ## [Unreleased]
 
-No changes have been made since the last release.
+### Added
+- Create code style workflow ([#10](https://github.com/ristekoss/rust-sso-ui-jwt/pull/10)) ([@nayyara-airlangga])
+
+### Fixed
+- Fix `actix-web-example` to match the code standards ([#10](https://github.com/ristekoss/rust-sso-ui-jwt/pull/10)) ([@nayyara-airlangga])
 
 
 ## [v0.2.0] - 2022-07-30
