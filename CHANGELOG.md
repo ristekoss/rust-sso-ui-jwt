@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ## [Unreleased]
 
-No changes have been made since the last release.
+### Removed
+- Remove `dotenv` and unused `tokio` features ([#13](https://github.com/ristekoss/rust-sso-ui-jwt/pull/13)) ([@nayyara-airlangga])
 
 ## [v0.3.0] - 2022-07-31
 
