@@ -18,11 +18,11 @@ struct TokenRes {
 
 async fn login(config: web::Data<SSOJWTConfig>, query: web::Query<LoginQuery>) -> HttpResponse {
     if let Some(ticket) = &query.ticket {
-        let res = validate_ticket(&**config, &ticket).await;
+        let res = validate_ticket(&**config, ticket).await;
 
         match res {
             Ok(res) => {
-                let token = create_token(&config, TokenType::AccessToken, res.clone()).unwrap();
+                let token = create_token(&config, TokenType::AccessToken, res).unwrap();
 
                 let creds = TokenRes { token };
                 HttpResponse::Ok().json(creds)
@@ -58,7 +58,7 @@ async fn get_self(config: web::Data<SSOJWTConfig>, req: HttpRequest) -> HttpResp
                     let token = header_vec.get(1);
 
                     if let Some(token) = token {
-                        match decode_token(&**config, TokenType::AccessToken, &token) {
+                        match decode_token(&**config, TokenType::AccessToken, token) {
                             Ok(data) => HttpResponse::Ok().json(SSOUser::from(data.claims)),
                             Err(err) => HttpResponse::Unauthorized().body(err.to_string()),
                         }
