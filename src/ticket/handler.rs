@@ -14,7 +14,6 @@ use super::{ServiceResponse, ValidateTicketError};
 /// - [`AuthenticationFailed`][validate_ticket_error]: Failed ticket authentication
 /// - [`ReqwestError`][validate_ticket_error]: Validation request caused an error
 /// - [`XMLParsingError`][validate_ticket_error]: Error parsing XML response
-/// - [`BadRequest`][validate_ticket_error]: Bad request to CAS server
 ///
 /// [validate_ticket_error]: crate::ticket::error::ValidateTicketError
 ///
@@ -74,8 +73,10 @@ pub async fn validate_ticket(
         }
     };
 
-    let content = match response.text().await {
-        Ok(content) => content,
+    let content = response.text().await.unwrap();
+
+    let response = match ServiceResponse::from_str(&content) {
+        Ok(response) => response,
         Err(_err) => {
             #[cfg(feature = "log")]
             log::error!("{}", _err);
@@ -83,8 +84,6 @@ pub async fn validate_ticket(
             return Err(ValidateTicketError::XMLParsingError);
         }
     };
-
-    let response = ServiceResponse::from_str(&content).unwrap();
 
     match response.authentication_success {
         Some(_) => Ok(response),

@@ -7,8 +7,6 @@ pub enum ValidateTicketError {
     AuthenticationFailed,
     /// Errors regarding the validation request.
     ReqwestError,
-    /// A bad request to the CAS server.
-    BadRequest,
     /// Error parsing the XML response.
     XMLParsingError,
 }
