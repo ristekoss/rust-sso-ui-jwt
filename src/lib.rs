@@ -21,7 +21,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! sso-ui-jwt = "0.3"
+//! sso-ui-jwt = "0.4"
 //! ```
 //!
 //! # Features
@@ -30,7 +30,7 @@
 //!
 //! ```toml
 //! [dependencies.sso-ui-jwt]
-//! version = "0.3"
+//! version = "0.4"
 //! features = ["log"]
 //! ```
 //!
