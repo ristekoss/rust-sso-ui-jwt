@@ -6,7 +6,12 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ## [Unreleased]
 
-No changes have been made.
+### Changed
+- Make ticket validation request to be synchronous ([#16](https://github.com/ristekoss/rust-sso-ui-jwt/pull/16)) ([@nayyara-airlangga])
+- Rename `ReqwestError` to `RequestError` ([#16](https://github.com/ristekoss/rust-sso-ui-jwt/pull/16)) ([@nayyara-airlangga])
+
+### Removed
+- Remove `tokio` and replace `reqwest` with `http_req` ([#16](https://github.com/ristekoss/rust-sso-ui-jwt/pull/16)) ([@nayyara-airlangga])
 
 
 ## [v0.3.1] - 2022-07-31
