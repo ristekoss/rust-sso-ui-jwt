@@ -18,7 +18,7 @@ struct TokenRes {
 
 async fn login(config: web::Data<SSOJWTConfig>, query: web::Query<LoginQuery>) -> HttpResponse {
     if let Some(ticket) = &query.ticket {
-        let res = validate_ticket(&**config, ticket).await;
+        let res = validate_ticket(&**config, ticket);
 
         match res {
             Ok(res) => {
