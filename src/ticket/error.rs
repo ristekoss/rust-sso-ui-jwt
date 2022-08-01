@@ -6,7 +6,7 @@ pub enum ValidateTicketError {
     /// Failed ticket authentication.
     AuthenticationFailed,
     /// Errors regarding the validation request.
-    ReqwestError,
+    RequestError,
     /// Error parsing the XML response.
     XMLParsingError,
 }

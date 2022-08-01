@@ -15,7 +15,7 @@ use super::{ServiceResponse, ValidateTicketError};
 /// # Errors
 ///
 /// - [`AuthenticationFailed`][validate_ticket_error]: Failed ticket authentication
-/// - [`ReqwestError`][validate_ticket_error]: Validation request caused an error
+/// - [`RequestError`][validate_ticket_error]: Validation request caused an error
 /// - [`XMLParsingError`][validate_ticket_error]: Error parsing XML response
 ///
 /// [validate_ticket_error]: crate::ticket::error::ValidateTicketError
@@ -69,7 +69,7 @@ pub fn validate_ticket(
             #[cfg(feature = "log")]
             log::error!("{}", _err);
 
-            return Err(ValidateTicketError::ReqwestError);
+            return Err(ValidateTicketError::RequestError);
         }
     };
 
