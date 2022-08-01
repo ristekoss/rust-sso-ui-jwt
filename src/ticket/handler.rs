@@ -1,6 +1,9 @@
 //! Ticket validation handlers.
 
-use reqwest::Client;
+use http_req::{
+    request::{Method, Request},
+    uri::Uri,
+};
 use strong_xml::XmlRead;
 
 use crate::SSOJWTConfig;
@@ -24,46 +27,43 @@ use super::{ServiceResponse, ValidateTicketError};
 ///     ticket::{validate_ticket, ValidateTicketError},
 ///     SSOJWTConfig,
 /// };
-/// use tokio;
 ///
-/// #[tokio::main]
-/// async fn main() {
-///     let config = SSOJWTConfig::new(
-///         120,
-///         120,
-///         String::from("access secret"),
-///         String::from("refresh secret"),
-///         String::from("http://some-service/login"),
-///         String::from("http://some-service"),
-///     );
+/// let config = SSOJWTConfig::new(
+///     120,
+///     120,
+///     String::from("access secret"),
+///     String::from("refresh secret"),
+///     String::from("http://some-service/login"),
+///     String::from("http://some-service"),
+/// );
 ///
-///     let response = validate_ticket(&config, "a ticket").await;
-///     let status = if let Err(ValidateTicketError::AuthenticationFailed) = response {
-///         "failed"
-///     } else {
-///         "success"
-///     };
+/// let response = validate_ticket(&config, "a ticket");
+/// let status = if let Err(ValidateTicketError::XMLParsingError) = response {
+///     "failed"
+/// } else {
+///     "success"
+/// };
 ///
-///     assert_eq!(status, "failed");
-/// }
+/// assert_eq!(status, "failed");
 /// ```
-pub async fn validate_ticket(
+pub fn validate_ticket(
     config: &SSOJWTConfig,
     ticket: &str,
 ) -> Result<ServiceResponse, ValidateTicketError> {
-    let client = Client::new();
+    let mut writer = Vec::new();
     let url = format!(
         "{}/serviceValidate?ticket={}&service={}",
         config.cas_url, ticket, config.service_url
     );
+    let uri = Uri::try_from(url.as_str()).unwrap();
+    let mut request = Request::new(&uri);
 
-    let response = match client
-        .get(&url)
+    let request = request
+        .method(Method::GET)
         .header("Host", "sso.ui.ac.id")
-        .header("User-Agent", "Node-Fetch")
-        .send()
-        .await
-    {
+        .header("User-Agent", "Node-Fetch");
+
+    match request.send(&mut writer) {
         Ok(res) => res,
         Err(_err) => {
             #[cfg(feature = "log")]
@@ -73,7 +73,7 @@ pub async fn validate_ticket(
         }
     };
 
-    let content = response.text().await.unwrap();
+    let content = String::from_utf8_lossy(&writer);
 
     let response = match ServiceResponse::from_str(&content) {
         Ok(response) => response,
